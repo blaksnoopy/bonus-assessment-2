@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% if (!hobby) { %>
+    <p>No Hobbies Here!</p>
+    <% } %>
+    <% hobby.forEach(function (hobby, idx) { %>
+      <li>
+        <%= hobby.name %>
+      <form action="/delete/<%= hobby._id %>?_method=DELETE" method='POST'>
+        <button type="submit">Delete</button>
+      </form>
+      </li>
+    <% }) %>
+    <p>----------------------</p>
+    <br>
+    <h2>Add New Hobby!</h2>
+    <form action="/add" method="POST">
+    <input type="text" name="name" placeholder="hobby name">
+    <br>
+    <textarea type="text" name="details" placeholder="hobby details"></textarea> 
+    <br>  
+    <button type='submit'>Submit Hobby</button> 
+  </form>
+  </body>
+</html>

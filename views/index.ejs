@@ -11,14 +11,13 @@
     <% } %>
     <% hobby.forEach(function (hobby, idx) { %>
       <li>
-        <%= hobby.name %>
+       <%= hobby.name %> - <a href="/show/<%= hobby._id %>">view details</a>
       <form action="/delete/<%= hobby._id %>?_method=DELETE" method='POST'>
         <button type="submit">Delete</button>
       </form>
       </li>
     <% }) %>
     <p>----------------------</p>
-    <br>
     <h2>Add New Hobby!</h2>
     <form action="/add" method="POST">
     <input type="text" name="name" placeholder="hobby name">

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/">Back To Homepage</a>
+    <h1><%= title %></h1>
+      <li>
+       Hobby Name: <strong><%= hobby.name %></strong>
+      </li>
+      <li>
+       Hobby Description: <%= hobby.details %>   
+      </li>
+    <h2>Update Hobby Below!</h2>
+    <form action="/show/<%= hobby._id %>?_method=PUT" method="POST">
+    <input type="text" name="name" value="<%= hobby.name %>">
+    <br>
+    <textarea type="text" name="details"><%= hobby.details %></textarea> 
+    <br>  
+    <button type='submit'>Update Hobby</button> 
+  </form>
+  <p>-----------</p>
+  <h2>Delete Hobby?</h2>
+  <form action="/deleteHob/<%= hobby._id %>?_method=DELETE" method='POST'>
+    <button type="submit">Delete <%= hobby.name %></button>
+  </form>
+  </body>
+</html>

@@ -3,11 +3,27 @@ var Hobby = require('../models/hobby');
 module.exports = {
     index,
     create,
-    delete: deleteHobby
+    delete: deleteHobby,
+    show,
+    update
+};
+
+function update(req, res) {
+    Hobby.findByIdAndUpdate(req.params.id, req.body, function(err, hobby) {
+        res.redirect(`/show/${req.params.id}`)
+    })
+};
+
+function show(req, res) {
+    Hobby.findById(req.params.id, function(err, hobby) {
+        res.render('show', {
+            title: 'Hobbies Details Page',
+            hobby
+        })
+    })
 };
 
 function deleteHobby(req, res) {
-    console.log('hey!!!!!!!!')
     Hobby.findByIdAndDelete(req.params.id, function(err, hobby) {
         res.redirect('/')
     })
